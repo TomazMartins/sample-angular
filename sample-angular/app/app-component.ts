@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import{ Component } from 'angular2/core'
 
 @Component(
   {
@@ -6,4 +6,4 @@ import {Component} from 'angular2/core';
     template: "<h1> Bem Vindo ao Mundo Angular 2 e Typescript</h1>"
   }
 )
-export class AppCompnent() {}
+export class AppCompnent {}
