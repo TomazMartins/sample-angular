@@ -1,33 +1,34 @@
 import{ Component } from 'angular2/core'
+import{ Client } from './client'
 
 @Component(
   {
     selector: "my-app",
     template: `
       <h1>Bem Vindo ao Mundo Angular 2 e Typescript</h1>
-      <h2>Listagem de Tarefas</h2>
+      <h2>{{ title }}</h2>
+      <p>Selected Client: {{ client.name }}</p>
       <ul>
-        <li *ngFor="#task of tasks; #i = index" >
-          {{ task }} <a href="#" (click)="removeTask( i )">[ X ]</a>
-        </li>
+        <li *ngFor="#client of clients; #i = index" >{{ client.name }}</li>
       </ul>
-      <input type="text" placeholder="Digit your task here..." [(ngModel)]="task" />
-      <button (click)="addTask()">Add Task</button>
     `
   }
 )
 export class AppCompnent {
-  public tasks:string[] = [];
-  public task:string;
+  public title:string;
+  public client:Client;
+  public clients:Client[];
 
-  addTask() {
-    if( this.task != "" ) {
-      this.tasks.push( this.task );
-      this.task = "";
-    }
-  }
+  constructor() {
+    this.title = "Listing of Clients"
 
-  removeTask( index:number ) {
-    this.tasks.splice( index, 1 );
+    this.clients = [
+      new Client( 1, "Carla" ),
+      new Client( 2, "Mário" ),
+      new Client( 3, "Enya" ),
+      new Client( 4, "Rodrigo" )
+    ]
+
+    this.client = this.clients[ 0 ];
   }
 }
