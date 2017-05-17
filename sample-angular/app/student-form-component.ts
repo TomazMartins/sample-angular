@@ -9,12 +9,14 @@ import{ Course } from "./models/course";
   }
 )
 export class StudentFormComponent {
-  isSuccess:boolean;
+  public isSuccess:boolean = false;
 
   public student:Student;
   public courses:Course[];
 
   constructor() {
+    this.student = new Student();
+
     this.courses = [
       new Course( "cpp", "C++" ),
       new Course( "java", "Java" ),
@@ -22,8 +24,6 @@ export class StudentFormComponent {
       new Course( "rubyonrails", "Ruby On Rails" ),
       new Course( "angular2", "Angular 2" )
     ]
-
-    isSuccess = false;
   }
 
   onSubmit() {

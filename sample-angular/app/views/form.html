@@ -1,30 +1,35 @@
 <div class="jumbotron">
 	<h1 class="text-center">Angular 2 - Formulário</h1>
 	<hr />
-	<div class="alert alert-success" role="alert">
+	<div class="alert alert-success" role="alert" *ngIf="isSuccess">
 		Formulário enviado com sucesso!
+		<br />
+		{{ debug() }}
 	</div>
 
-	<form>
+	<form *ngIf="!isSuccess" (ngSubmit)="onSubmit()">
 		<div class="form-group">
 			<label class="control-label" for="nome">Nome</label>
 			<input type="text" class="form-control" name="nome"
-				id="nome">
+				id="nome" [(ngModel)]="student.name">
 		</div>
 		<div class="form-group">
 			<label class="control-label" for="email">Email</label>
 			<input type="text" class="form-control" name="email"
-				id="email">
+				id="email" [(ngModel)]="student.email">
 		</div>
 		<div class="form-group">
 			<label class="control-label" for="idade">Idade</label>
 			<input type="text" class="form-control" name="idade"
-				id="idade">
+				id="idade" [(ngModel)]="student.age">
 		</div>
 		<div class="form-group">
 			<label class="control-label" for="curso">Curso</label>
-			<select name="curso" id="curso" class="form-control">
+			<select name="curso" id="curso" class="form-control" [(ngModel)]="student.course">
 				<option value="">Selecione</option>
+				<option *ngFor="#course of courses" [value]="course.id">
+					{{ course.name }}
+				</option>
 			</select>
 		</div>
 		<hr />
